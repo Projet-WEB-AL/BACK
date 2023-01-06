@@ -13,6 +13,7 @@ import { RolesService } from './roles/roles.service';
 import { RolesController } from './roles/roles.controller';
 import { RolesModule } from './roles/roles.module';
 import { Roles } from './roles/roles.entity';
+import { RabbitmqModule } from './rabbitmq/rabbitmq.module';
 
 
 @Module({
@@ -27,7 +28,7 @@ import { Roles } from './roles/roles.entity';
     synchronize: true,
 }),
 
-UsersModule, AssociationsModule, AuthModule, RoleModule, RolesModule],
+UsersModule, AssociationsModule, AuthModule, RoleModule, RolesModule, RabbitmqModule],
   
   controllers: [AppController, ],
   providers: [AppService, 
