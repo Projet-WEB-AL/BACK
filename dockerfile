@@ -1,4 +1,4 @@
-FROM node:19.3.0 AS builder
+FROM node:19.2.0 AS builder
 
 # Create app directory
 WORKDIR /user/src/app
@@ -13,7 +13,7 @@ COPY . .
 
 RUN npm run build
 
-FROM node:19.3.0
+FROM node:19.2.0
 
 COPY --from=builder /user/src/app/node_modules ./node_modules
 COPY --from=builder /user/src/app/package*.json ./
