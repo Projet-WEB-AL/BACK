@@ -8,6 +8,7 @@ export class RabbitmqController {
 
   @Post()
   create(@Body() message: any) {
-    this.service.sendToRabbitMQ(message.name);
+    console.log(message)
+    this.service.sendToRabbitMQ(message.message);
   }
 }

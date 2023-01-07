@@ -10,7 +10,8 @@ export class RabbitmqService {
 
     constructor(){}
 
-    async sendToRabbitMQ(message) {
+    async sendToRabbitMQ(message : string) {
+        
         let ref = this;
         let url = process.env.AMQP_URL || 'amqp://guest:guest@rabbitmq:5672';
         ref.connection = await amqp.connect(url);
@@ -24,7 +25,10 @@ export class RabbitmqService {
        
       
         // Envoi du message à la queue
-        await this.channel.sendToQueue('queue_rabbitmq', Buffer.from(JSON.stringify(message)));
+
+        console.log("start sending a message"+message);
+        
+        await this.channel.sendToQueue("my-queue", Buffer.from(message));
         console.log(new Date().toString() + ' : Message sent to rabbitmq');
     }
 }
